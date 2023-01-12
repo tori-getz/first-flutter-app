@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_first_app/first_example.dart';
+import 'package:flutter_first_app/second_page.dart';
+import 'package:flutter_first_app/user_model.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -9,6 +10,17 @@ void main() {
 
 class MyFirstApp extends StatelessWidget {
   const MyFirstApp({super.key});
+
+  Widget _userButton(BuildContext context, {required User user}) {
+    return ElevatedButton(
+      onPressed: () {
+        Route route =
+            MaterialPageRoute(builder: (context) => SecondPage(user: user));
+        Navigator.push(context, route);
+      },
+      child: Text('Нажми, чтоб увидеть пользователя "${user.name}"'),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +32,13 @@ class MyFirstApp extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: MaterialButton(
-            onPressed: () {
-              Route route =
-                  MaterialPageRoute(builder: (context) => SecondPage());
-              Navigator.push(context, route);
-            },
-            child: const Text('жмякни чтоб перейти на другой экран'),
-          ),
-        ));
+            child: Column(
+          children: [
+            _userButton(context,
+                user: User(image: 'assets/images/pz.jpg', name: 'Санька')),
+            _userButton(context,
+                user: User(image: 'assets/images/tz.jpeg', name: 'Гецуля'))
+          ],
+        )));
   }
 }
