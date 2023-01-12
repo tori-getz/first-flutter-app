@@ -27,12 +27,19 @@ class _MyFirstAppState extends State<MyFirstApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('First Flutter App'),
+          title: const Text(
+            'First Flutter App',
+            style: TextStyle(fontFamily: 'Lobster'),
+          ),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset(
+                  _isCool ? 'assets/images/tz.jpeg' : 'assets/images/pz.jpg',
+                  width: 300,
+                  height: 300),
               _isCool
                   ? const Text('Санчез и Гец крутотятки и котятки')
                   : const Text('Санчез и гец чето так се('),
