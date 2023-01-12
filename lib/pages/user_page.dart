@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_first_app/models/user_model.dart';
+import 'package:flutter_first_app/models/user.dart';
 
 class UserPage extends StatelessWidget {
   late User user;

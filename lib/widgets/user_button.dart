@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_first_app/models/user_model.dart';
+import 'package:flutter_first_app/models/user.dart';
 
 class UserButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -18,8 +18,12 @@ class UserButton extends StatelessWidget {
       onPressed: onPressed,
       style: style,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          CircleAvatar(
+            foregroundImage: Image.network(user.image).image,
+            backgroundColor: Colors.grey[600],
+          ),
           Text(user.name),
           const Icon(Icons.keyboard_arrow_right),
         ],

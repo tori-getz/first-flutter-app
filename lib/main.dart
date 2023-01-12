@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_first_app/pages/add_user_page.dart';
+import 'package:flutter_first_app/pages/comments_page.dart';
 import 'package:flutter_first_app/pages/home_page.dart';
+import 'package:flutter_first_app/pages/posts_page.dart';
 import 'package:flutter_first_app/pages/user_page.dart';
 
 void main() {
@@ -10,7 +14,9 @@ void main() {
     routes: {
       '/home': (context) => const HomePage(),
       '/user': (context) => UserPage(),
-      '/adduser': (context) => AddUserPage()
+      '/adduser': (context) => AddUserPage(),
+      '/posts': (context) => PostsPage(),
+      '/comments': (context) => CommentsPage(),
     },
   ));
 }

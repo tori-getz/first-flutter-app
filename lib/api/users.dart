@@ -1,4 +1,4 @@
-import 'package:flutter_first_app/models/user_model.dart';
+import 'package:flutter_first_app/models/user.dart';
 
 List<User> users = [
   User(
@@ -10,3 +10,7 @@ List<User> users = [
           'https://sun1.userapi.com/sun1-93/s/v1/ig2/X9JvNwNvgau7NMd_9ktC5HL8-aWkSFOTHPkK4mxZMt_QXgtkl7DrBhLVIcsb6wwwdoP9IwP8mZC_Fy83E47s4mwE.jpg?size=1080x720&quality=96&type=album',
       name: 'Гецулечка'),
 ];
+
+Future<List<User>> getUsers() async {
+  return users;
+}
