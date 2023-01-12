@@ -4,6 +4,10 @@ import 'package:flutter_first_app/models/comment.dart';
 import 'dart:math' as math;
 
 class CommentsPage extends StatefulWidget {
+  final int postId;
+
+  const CommentsPage({super.key, required this.postId});
+
   @override
   State<StatefulWidget> createState() {
     return _CommentsPageState();
@@ -22,9 +26,7 @@ class _CommentsPageState extends State<CommentsPage> {
 
   @protected
   void didChangeDependencies() {
-    RouteSettings settings = ModalRoute.of(context)!.settings;
-    int postId = settings.arguments as int;
-    _commentList = getPostComments(postId);
+    _commentList = getPostComments(widget.postId);
     _commentList.then((commentList) {
       setState(() {
         _title = 'Комментарии (${commentList.comments.length})';
