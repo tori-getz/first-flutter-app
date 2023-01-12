@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'post.g.dart';
+
+@JsonSerializable()
 class PostList {
   final List<Post> posts;
   final int total;
@@ -11,20 +16,13 @@ class PostList {
     this.limit,
   );
 
-  factory PostList.fromJson(Map<String, dynamic> json) {
-    var postsJson = json['posts'] as List;
+  factory PostList.fromJson(Map<String, dynamic> json) =>
+      _$PostListFromJson(json);
 
-    List<Post> posts = postsJson.map((i) => Post.fromJson(i)).toList();
-
-    return PostList(
-      posts,
-      json['total'] as int,
-      json['skip'] as int,
-      json['limit'] as int,
-    );
-  }
+  Map<String, dynamic> toJson() => _$PostListToJson(this);
 }
 
+@JsonSerializable()
 class Post {
   final int id;
   final String title;
@@ -40,13 +38,7 @@ class Post {
     required this.reactions,
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
-      id: json['id'] as int,
-      title: json['title'] as String,
-      body: json['body'] as String,
-      userId: json['userId'] as int,
-      reactions: json['reactions'] as int,
-    );
-  }
+  factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PostToJson(this);
 }

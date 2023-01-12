@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'comment.g.dart';
+
+@JsonSerializable()
 class CommentList {
   final List<Comment> comments;
   final int total;
@@ -11,21 +16,13 @@ class CommentList {
     this.limit,
   );
 
-  factory CommentList.fromJson(Map<String, dynamic> json) {
-    var commentsJson = json['comments'] as List;
+  factory CommentList.fromJson(Map<String, dynamic> json) =>
+      _$CommentListFromJson(json);
 
-    List<Comment> comments =
-        commentsJson.map((i) => Comment.fromJson(i)).toList();
-
-    return CommentList(
-      comments,
-      json['total'] as int,
-      json['skip'] as int,
-      json['limit'] as int,
-    );
-  }
+  Map<String, dynamic> toJson() => _$CommentListToJson(this);
 }
 
+@JsonSerializable()
 class Comment {
   final int id;
   final String body;
@@ -39,16 +36,13 @@ class Comment {
     required this.user,
   });
 
-  factory Comment.fromJson(Map<String, dynamic> json) {
-    return Comment(
-      id: json['id'] as int,
-      body: json['body'] as String,
-      postId: json['postId'] as int,
-      user: CommentUser.fromJson(json['user']),
-    );
-  }
+  factory Comment.fromJson(Map<String, dynamic> json) =>
+      _$CommentFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CommentToJson(this);
 }
 
+@JsonSerializable()
 class CommentUser {
   final int id;
   final String username;
@@ -58,10 +52,8 @@ class CommentUser {
     required this.username,
   });
 
-  factory CommentUser.fromJson(Map<String, dynamic> json) {
-    return CommentUser(
-      id: json['id'] as int,
-      username: json['username'] as String,
-    );
-  }
+  factory CommentUser.fromJson(Map<String, dynamic> json) =>
+      _$CommentUserFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CommentUserToJson(this);
 }
