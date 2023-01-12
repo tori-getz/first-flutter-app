@@ -1,31 +1,18 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_first_app/first_example.dart';
 
 void main() {
-  runApp(MyFirstApp());
+  runApp(MaterialApp(
+    home: MyFirstApp(),
+  ));
 }
 
-class MyFirstApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MyFirstAppState();
-  }
-}
-
-class _MyFirstAppState extends State<MyFirstApp> {
-  late bool _isCool;
+class MyFirstApp extends StatelessWidget {
+  const MyFirstApp({super.key});
 
   @override
-  void initState() {
-    _isCool = true;
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext ctx) {
-    return MaterialApp(
-      home: Scaffold(
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
           title: const Text(
             'First Flutter App',
@@ -33,28 +20,14 @@ class _MyFirstAppState extends State<MyFirstApp> {
           ),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                  _isCool ? 'assets/images/tz.jpeg' : 'assets/images/pz.jpg',
-                  width: 300,
-                  height: 300),
-              _isCool
-                  ? const Text('Санчез и Гец крутотятки и котятки')
-                  : const Text('Санчез и гец чето так се('),
-              OutlinedButton(
-                onPressed: () {
-                  setState(() {
-                    _isCool = !_isCool;
-                  });
-                },
-                child: const Text('Плиз, нажми на меня'),
-              )
-            ],
+          child: MaterialButton(
+            onPressed: () {
+              Route route =
+                  MaterialPageRoute(builder: (context) => SecondPage());
+              Navigator.push(context, route);
+            },
+            child: const Text('жмякни чтоб перейти на другой экран'),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
