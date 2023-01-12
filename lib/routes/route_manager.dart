@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_app/models/user.dart';
 import 'package:flutter_first_app/pages/add_user_page.dart';
 import 'package:flutter_first_app/pages/comments_page.dart';
 import 'package:flutter_first_app/pages/home_page.dart';
@@ -15,7 +16,8 @@ class RouteManager {
         );
 
       case userPageRoute:
-        return MaterialPageRoute(builder: (context) => UserPage());
+        User user = settings.arguments as User;
+        return MaterialPageRoute(builder: (context) => UserPage(user: user));
 
       case addUserPageRoute:
         return MaterialPageRoute(

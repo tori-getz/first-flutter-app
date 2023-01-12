@@ -1,6 +1,6 @@
 class User {
-  late String image;
   late String name;
+  late String image;
 
   User({required this.name, required this.image});
 }

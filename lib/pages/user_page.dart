@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_first_app/models/user.dart';
 
 class UserPage extends StatelessWidget {
-  late User user;
+  final User user;
+
+  UserPage({required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +12,6 @@ class UserPage extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)));
-
-    RouteSettings settings = ModalRoute.of(context)!.settings;
-    user = settings.arguments as User;
 
     return MaterialApp(
       home: Scaffold(
